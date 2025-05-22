@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - Mars AI</title>
+  <link rel="icon" href="https://i.ibb.co/QzsgnyX/IMG-20250519-WA0003.webp" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes orbit {
+      0% { transform: translate(-50%, 0) rotate(0deg) translateX(150px) rotate(0deg); }
+      100% { transform: translate(-50%, 0) rotate(360deg) translateX(150px) rotate(-360deg); }
+    }
+    .mars-fly, .astro {
+      position: fixed;
+      top: 5%;
+      left: 25%;
+      width: 40%;
+      height: 40px;
+      z-index: 20;
+      animation: orbit 20s linear infinite;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="text-white font-sans relative" style="background-image: url('https://i.ibb.co/zhMFB2pC/IMG-20250519-WA0002.webp'); background-size: cover; background-position: center; background-attachment: fixed;">
+
+  <div class="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-md z-0"></div>
+
+  <!-- Orbiting images -->
+  <div class="mars-fly z-10">
+    <img src="https://i.ibb.co/KzhsFCHb/1000008054-removebg-preview.webp" alt="Flying Mars" class="w-full h-full object-contain">
+  </div>
+  <div class="astro z-10">
+    <img src="https://i.ibb.co/sdJN5JKw/1000008058-removebg-preview.webp" alt="Flying Astro" class="w-full h-full object-contain">
+  </div>
+
+  <!-- Contact Form Section -->
+  <section class="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative z-10">
+    <h2 class="text-4xl font-bold text-orange-400 mb-4">Contact Us</h2>
+    <p class="text-gray-300 mb-8 text-center max-w-xl">Send us your details below to receive your Mars boarding pass. Details don’t have to be real!</p>
+
+    <form onsubmit="event.preventDefault(); showTicket();" class="bg-gray-800 bg-opacity-90 rounded-2xl p-8 w-full max-w-md shadow-xl space-y-4">
+      <input type="text" placeholder="Name" class="w-full p-3 rounded-xl bg-gray-700 text-white placeholder-gray-400" />
+      <input type="email" placeholder="Email" class="w-full p-3 rounded-xl bg-gray-700 text-white placeholder-gray-400" />
+      <input type="tel" placeholder="Phone Number" class="w-full p-3 rounded-xl bg-gray-700 text-white placeholder-gray-400" />
+      <textarea placeholder="Message (optional)" class="w-full p-3 rounded-xl bg-gray-700 text-white placeholder-gray-400 h-28"></textarea>
+      <button type="submit" class="w-full py-3 bg-orange-500 hover:bg-orange-600 rounded-xl text-white font-semibold">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Ticket Popup -->
+  <div id="ticketPopup" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
+    <img src="https://i.ibb.co/XrPzNLQb/Screenshot-20250520-212420-One-Drive.webp" alt="Boarding Pass" class="w-[400px] rounded-xl shadow-2xl transform scale-75 opacity-0 transition duration-500 ease-out" />
+  </div>
+
+  <script>
+    function showTicket() {
+      const popup = document.getElementById('ticketPopup');
+      const img = popup.querySelector('img');
+      popup.classList.remove('hidden');
+      setTimeout(() => {
+        img.classList.remove('scale-75', 'opacity-0');
+        img.classList.add('scale-100', 'opacity-100');
+      }, 10);
+      setTimeout(() => {
+        img.classList.remove('scale-100', 'opacity-100');
+        img.classList.add('scale-75', 'opacity-0');
+      }, 3000);
+      setTimeout(() => {
+        popup.classList.add('hidden');
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
