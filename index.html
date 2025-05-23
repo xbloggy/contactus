@@ -27,15 +27,13 @@
 
   <div class="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-md z-0"></div>
 
-  <!-- Return to Home Button -->
   <div class="fixed top-4 left-4 z-30">
-    <a href="https://xbloggy.github.io/marsainexthome" 
+    <a href="https://xbloggy.github.io/marsainexthome"
        class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold shadow-lg">
        Return to Home
     </a>
   </div>
 
-  <!-- Orbiting images -->
   <div class="mars-fly z-10">
     <img src="https://i.ibb.co/KzhsFCHb/1000008054-removebg-preview.webp" alt="Flying Mars" class="w-full h-full object-contain">
   </div>
@@ -43,21 +41,73 @@
     <img src="https://i.ibb.co/sdJN5JKw/1000008058-removebg-preview.webp" alt="Flying Astro" class="w-full h-full object-contain">
   </div>
 
-  <!-- Contact Form Section -->
   <section class="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative z-10">
-    <h2 class="text-4xl font-bold text-orange-400 mb-4">Contact Us</h2>
+    <h2 class="text-4xl font-bold text-orange-400 mb-4">Search Flights</h2>
     <p class="text-gray-300 mb-8 text-center max-w-xl">Send us your details below to receive your Mars boarding pass. Details don’t have to be real!</p>
 
     <form onsubmit="event.preventDefault(); showTicket();" class="bg-gray-800 bg-opacity-90 rounded-2xl p-8 w-full max-w-md shadow-xl space-y-4">
-      <input type="text" placeholder="Name" class="w-full p-3 rounded-xl bg-gray-700 text-white placeholder-gray-400" />
-      <input type="email" placeholder="Email" class="w-full p-3 rounded-xl bg-gray-700 text-white placeholder-gray-400" />
-      <input type="tel" placeholder="Phone Number" class="w-full p-3 rounded-xl bg-gray-700 text-white placeholder-gray-400" />
-      <textarea placeholder="Message (optional)" class="w-full p-3 rounded-xl bg-gray-700 text-white placeholder-gray-400 h-28"></textarea>
-      <button type="submit" class="w-full py-3 bg-orange-500 hover:bg-orange-600 rounded-xl text-white font-semibold">Send Message</button>
+
+      <div class="flex bg-gray-700 rounded-xl overflow-hidden mb-4">
+        <button type="button" class="flex-1 py-2 text-white bg-orange-500 rounded-xl">ROUND TRIP</button>
+        <button type="button" class="flex-1 py-2 text-gray-400">ONE WAY</button>
+      </div>
+
+      <div class="relative">
+        <select class="w-full p-3 rounded-xl bg-gray-700 text-white appearance-none pr-8">
+          <option value="" disabled selected>Select departure city</option>
+          <option value="earth">Earth</option>
+          <option value="mars">Mars</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+
+      <div class="relative">
+        <select class="w-full p-3 rounded-xl bg-gray-700 text-white appearance-none pr-8">
+          <option value="" disabled selected>Select city</option>
+          <option value="mars">Mars</option>
+          <option value="earth">Earth</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label for="departureDate" class="block text-gray-400 text-sm mb-1">Departure</label>
+          <input type="date" id="departureDate" value="2025-05-23" class="w-full p-3 rounded-xl bg-gray-700 text-white" />
+        </div>
+        <div>
+          <label for="returnDate" class="block text-gray-400 text-sm mb-1">Return</label>
+          <input type="date" id="returnDate" value="2025-05-23" class="w-full p-3 rounded-xl bg-gray-700 text-white" />
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center bg-gray-700 rounded-xl p-3">
+        <span class="text-white">Passengers</span>
+        <div class="flex items-center">
+          <span class="text-white mr-2">1 Adult</span>
+          <button type="button" class="text-gray-400 text-xl">+</button>
+        </div>
+      </div>
+
+      <div class="flex justify-around mt-4">
+        <label class="inline-flex items-center">
+          <input type="radio" name="class" value="tourist" class="form-radio text-orange-500" checked>
+          <span class="ml-2 text-white">Tourist class</span>
+        </label>
+        <label class="inline-flex items-center">
+          <input type="radio" name="class" value="business" class="form-radio text-orange-500">
+          <span class="ml-2 text-white">Business class</span>
+        </label>
+      </div>
+
+      <button type="submit" class="w-full py-3 bg-orange-500 hover:bg-orange-600 rounded-xl text-white font-semibold">Search flights</button>
     </form>
   </section>
 
-  <!-- Ticket Popup -->
   <div id="ticketPopup" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
     <img src="https://i.ibb.co/XrPzNLQb/Screenshot-20250520-212420-One-Drive.webp" alt="Boarding Pass" class="w-[400px] rounded-xl shadow-2xl transform scale-75 opacity-0 transition duration-750 ease-out" />
   </div>
